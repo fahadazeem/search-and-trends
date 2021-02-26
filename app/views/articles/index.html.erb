@@ -1,0 +1,49 @@
+<%= javascript_pack_tag 'search' %>
+
+<div class="container">
+
+  <label for="search" class="form-label mt-5">Articles</label>
+  <input class="form-control" list="searchOptions" id="search" placeholder="Type to search..." value="<%= params.dig(:query) %>">
+
+  <datalist id="searchOptions">
+  </datalist>
+
+
+  <label for="trending" class="form-label mt-5">Trending Searches</label>
+  <table id='trending' class="table table-striped">
+    <thead>
+    <tr>
+      <th>Searches</th>
+    </tr>
+    </thead>
+
+    <% @trending.each do |name| %>
+      <tr>
+        <td>
+          <%= link_to name, "?query=#{name}" %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <label for="articles" class="form-label mt-5">Articles</label>
+  <table id="articles" class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Body</th>
+      </tr>
+    </thead>
+
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.id %></td>
+        <td><%= article.title %></td>
+        <td><%= article.body %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+
+
